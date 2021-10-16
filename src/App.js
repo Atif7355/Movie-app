@@ -6,6 +6,8 @@ import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import AddFavourites from './components/AddFavourites';
 import RemoveFavourites from './components/RemoveFavourites';
+import Footer from './components/Footer';
+
 
 const App = () => {
 	const [movies, setMovies] = useState([]);
@@ -17,6 +19,7 @@ const App = () => {
 
 		const response = await fetch(url);
 		const responseJson = await response.json();
+		console.log(responseJson)
 
 		if (responseJson.Search) {
 			setMovies(responseJson.Search);
@@ -57,6 +60,7 @@ const App = () => {
 	};
 
 	return (
+		<>
 		<div className='container-fluid movie-app'>
 			<div className='row d-flex align-items-center mt-4 mb-4'>
 				<MovieListHeading heading='Movies' />
@@ -80,6 +84,8 @@ const App = () => {
 				/>
 			</div>
 		</div>
+		<Footer/>
+		</>
 	);
 };
 
